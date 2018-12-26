@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    component: postgres
+  ports:
+    - port: 5432  #Port other objects can use to access this POD. In other words, port 3000 on service and port 3000(shown below) in container
+      targetPort: 5432  #Port inside server container. There is no nodePort in ClusterIP as it is not accessible from outside world.

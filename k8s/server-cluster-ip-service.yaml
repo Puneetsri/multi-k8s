@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: server-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    component: server
+  ports:
+    - port: 5000  #Port other objects can use to access this POD. In other words, port 3000 on service and port 3000(shown below) in container
+      targetPort: 5000  #Port inside server container. There is no nodePort in ClusterIP as it is not accessible from outside world.
